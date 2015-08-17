@@ -1,10 +1,11 @@
+package forsale.postdiesel;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.Proxy;
 import java.net.InetSocketAddress;
-import java.net.MalformedURLException; 
-import java.io.IOException; 
-import java.io.OutputStreamWriter; 
+import java.net.Proxy;
+import java.net.URL;
 
 public class HttpManager {
     public HttpURLConnection c;
@@ -22,9 +23,7 @@ public class HttpManager {
             c.setDoOutput(true); 
             //c.disconnect();
             
-        } catch (MalformedURLException e) { 
-            e.printStackTrace();
-        } catch (IOException e) { 
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -45,9 +44,7 @@ public class HttpManager {
                 writer.close();
             }
             
-        } catch (MalformedURLException e) { 
-            e.printStackTrace();
-        } catch (IOException e) { 
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -1,23 +1,13 @@
-import java.io.IOException; 
-import java.io.OutputStreamWriter; 
-import java.io.UnsupportedEncodingException; 
-import java.net.HttpURLConnection; 
-import java.net.MalformedURLException; 
-import java.net.URL; 
-import java.net.URLEncoder; 
-import java.net.Proxy;
-import java.net.InetSocketAddress;
-import java.io.BufferedReader; 
-import java.io.InputStreamReader; 
-import java.io.FileWriter;
-import java.util.Iterator;
-import java.util.ArrayList;
-import java.util.List;
+package forsale.postdiesel;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
  
 public class Login {  
     private String sessId;
@@ -72,7 +62,7 @@ public class Login {
     } 
     
     public String getAttr(HttpURLConnection c, String headerField, String sub, String delimiter) {
-        String attr = new String();  
+        String attr = "";
            
         if (c.getHeaderFields().get(headerField) != null) {
             
@@ -90,7 +80,7 @@ public class Login {
     }
     
     public String getParamValue(String str, String param, String delimiter, String end) {
-        String attr = new String();          
+        String attr = "";
             
         for (String value : str.split(delimiter)) {  
         
@@ -111,8 +101,8 @@ public class Login {
     }
     
     private String getAuthKey(HttpURLConnection c) {
-        String authKey = new String();
-        BufferedReader reader = null;
+        String authKey;
+        BufferedReader reader;
         StringBuilder sb = new StringBuilder();
         try {
             reader = new BufferedReader(new InputStreamReader(c.getInputStream()));

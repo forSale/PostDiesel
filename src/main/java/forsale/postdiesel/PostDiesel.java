@@ -1,26 +1,15 @@
-import java.io.IOException; 
-import java.io.OutputStreamWriter; 
-import java.io.UnsupportedEncodingException; 
-import java.net.HttpURLConnection; 
-import java.net.MalformedURLException; 
-import java.net.URL; 
-import java.net.URLEncoder; 
-import java.net.Proxy;
-import java.net.InetSocketAddress;
-import java.io.BufferedReader; 
-import java.io.InputStreamReader; 
-import java.io.FileWriter;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.map.ObjectMapper;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.FileReader;
-import java.io.File;
+package forsale.postdiesel;
+
 import org.jsoup.helper.Validate;
- 
-public class PostDiesel { 
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PostDiesel {
     
     private String gopId;
     private String sessId;
@@ -74,7 +63,7 @@ public class PostDiesel {
             if (!gopId.trim().isEmpty())
                 writeToFile("post_id.txt", gopId);
             
-            if ( connect.c.getResponseCode() == connect.c.HTTP_MOVED_TEMP ) { 
+            if ( connect.c.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
                 // Все хорошо 
                 System.out.println("Post OK");
                 System.out.println(connect.c.getResponseCode());
@@ -106,7 +95,7 @@ public class PostDiesel {
     } 
     
     private static List<String> readFile(String filePath) {
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         try {        
             File file = new File(filePath);
             if (!file.exists()) {
@@ -140,7 +129,7 @@ public class PostDiesel {
     private StringBuilder inputStream(HttpManager connect) {
         StringBuilder sb = new StringBuilder();
         try {
-            BufferedReader reader = null;
+            BufferedReader reader;
             reader = new BufferedReader(new InputStreamReader(connect.c.getInputStream()));
             String line;
             while ( ( line = reader.readLine()) != null ) {
