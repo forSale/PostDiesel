@@ -1,8 +1,6 @@
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.BasicParser;
-import org.apache.commons.cli.ParseException;
+package forsale.postdiesel;
+
+import org.apache.commons.cli.*;
 
 public class CmdOpts {
     
@@ -39,7 +37,7 @@ public class CmdOpts {
         options.addOption("port", true, "port");
         
         try {
-            CommandLineParser parser = new BasicParser();
+            CommandLineParser parser = new DefaultParser();
             CommandLine cmd = parser.parse( options, args );
             topic = cmd.getOptionValue("t");
             user = cmd.getOptionValue("u");

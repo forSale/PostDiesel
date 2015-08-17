@@ -1,3 +1,5 @@
+package forsale.postdiesel;
+
 public class RequestParams {
 
     private static final String HOST = "http://diesel.elcat.kg";
